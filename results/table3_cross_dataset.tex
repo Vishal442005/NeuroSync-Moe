@@ -1,0 +1,15 @@
+\begin{table*}[t]
+\centering
+\caption{Cross-Dataset Generalization on OpenNeuro ds008851 (20,854 Cue-Reactivity Trials Across 60 Subjects, 8 Shared 10-20 Electrodes)}
+\label{tab:cross_dataset}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Architecture \& Adaptation Strategy} & \textbf{Accuracy (\%)} & \textbf{F1-Score (\%)} & \textbf{AUC-ROC} & \textbf{Cohen's $\kappa$} \\
+\hline
+Flat MoE (Zero-Shot) & 50.03\% & 33.37\% & 0.523 & 0.000 \\
+EEGNet (Zero-Shot) & 49.97\% & 33.30\% & 0.523 & 0.000 \\
+NeuroSync-MoE (Zero-Shot Transfer) & 49.97\% & 33.30\% & 0.507 & 0.000 \\
+\textbf{NeuroSync-MoE + DG-TTA (Adapted)} & \textbf{49.97\%} & \textbf{33.30\%} & \textbf{0.498} & \textbf{0.000} \\
+\hline
+\end{tabular}
+\end{table*}

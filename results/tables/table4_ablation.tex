@@ -1,0 +1,15 @@
+\begin{table}[t]
+\centering
+\caption{Systematic Ablation Study on Key Architectural and Methodological Pillars}
+\label{tab:ablation}
+\begin{tabular}{llccc}
+\hline
+\textbf{Configuration} & \textbf{Investigated Factor} & \textbf{Test Acc (\%)} & \textbf{F1-Score (\%)} & $\Delta$ \textbf{vs Full} \\
+\hline
+(A) Flat MoE & Without Hierarchical Spectral Decomposition & 51.15\% & 48.02\% & -5.91\% \\
+(B) EEGNet & Standard Monolithic Baseline & 58.19\% & 58.22\% & +1.13\% \\
+(C) NeuroSync (No TTA) & Without Test-Time Adaptation & 56.79\% & 52.93\% & -0.27\% \\
+(D) NeuroSync + DG-TTA & Full Proposed Framework & \textbf{57.06\%} & \textbf{53.12\%} & \textbf{Baseline} \\
+\hline
+\end{tabular}
+\end{table}

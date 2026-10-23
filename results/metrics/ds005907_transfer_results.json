@@ -1,0 +1,96 @@
+{
+  "dataset": "OpenNeuro ds005907 (RL Three-Armed Bandit Task)",
+  "cohort_size": 8,
+  "total_trials": 8379,
+  "shared_channels": 38,
+  "transfer_metrics": {
+    "accuracy": 0.5153359589449815,
+    "macro_f1": 0.44428848654596376,
+    "precision": 0.5504697820415364,
+    "recall": 0.5231225887162608,
+    "cohen_kappa": 0.04551663815456686,
+    "roc_auc": 0.5411430854331587,
+    "confusion_matrix": [
+      [
+        661,
+        3617
+      ],
+      [
+        444,
+        3657
+      ]
+    ]
+  },
+  "audit_correlation": {
+    "frontal_theta_pearson_r": 0.016659022051505573,
+    "frontal_theta_pearson_p": 0.9687701122498275,
+    "frontal_theta_spearman_rho": 0.29277002188455997,
+    "frontal_theta_spearman_p": 0.4816178143121546,
+    "parietal_alpha_pearson_r": -0.081865530962203,
+    "parietal_alpha_pearson_p": 0.8471865754538166,
+    "parietal_alpha_spearman_rho": -0.14638501094227999,
+    "parietal_alpha_spearman_p": 0.7294239249593865,
+    "cortical_gamma_pearson_r": 0.18008429533896195,
+    "cortical_gamma_pearson_p": 0.6695711680462394,
+    "cortical_gamma_spearman_rho": 0.0,
+    "cortical_gamma_spearman_p": 1.0
+  },
+  "per_subject_breakdown": {
+    "sub-001": {
+      "audit": 1.0,
+      "accuracy": 11.802748585286984,
+      "theta_gate": 0.08424467593431473,
+      "alpha_gate": 0.06809490919113159,
+      "gamma_gate": 0.7456376552581787
+    },
+    "sub-002": {
+      "audit": 2.0,
+      "accuracy": 4.788732394366197,
+      "theta_gate": 0.08449462056159973,
+      "alpha_gate": 0.06949074566364288,
+      "gamma_gate": 0.7441336512565613
+    },
+    "sub-003": {
+      "audit": 1.0,
+      "accuracy": 22.523461939520335,
+      "theta_gate": 0.08195037394762039,
+      "alpha_gate": 0.06996350735425949,
+      "gamma_gate": 0.7464215159416199
+    },
+    "sub-004": {
+      "audit": 1.0,
+      "accuracy": 24.385447394296953,
+      "theta_gate": 0.08095666766166687,
+      "alpha_gate": 0.07059050351381302,
+      "gamma_gate": 0.7470612525939941
+    },
+    "sub-007": {
+      "audit": 7.0,
+      "accuracy": 68.8360450563204,
+      "theta_gate": 0.08804065734148026,
+      "alpha_gate": 0.06779740005731583,
+      "gamma_gate": 0.742331326007843
+    },
+    "sub-008": {
+      "audit": 27.0,
+      "accuracy": 86.91834942932397,
+      "theta_gate": 0.08281464874744415,
+      "alpha_gate": 0.06921558082103729,
+      "gamma_gate": 0.7467096447944641
+    },
+    "sub-009": {
+      "audit": 11.0,
+      "accuracy": 97.30200174064404,
+      "theta_gate": 0.08326926827430725,
+      "alpha_gate": 0.07021883875131607,
+      "gamma_gate": 0.7459349036216736
+    },
+    "sub-010": {
+      "audit": 9.0,
+      "accuracy": 98.5207100591716,
+      "theta_gate": 0.0848679393529892,
+      "alpha_gate": 0.06816661357879639,
+      "gamma_gate": 0.7456484436988831
+    }
+  }
+}

@@ -1,0 +1,39 @@
+\begin{table*}[t]
+\centering
+\caption{Master Reference: Complete Hyperparameters of NeuroSync-MoE Pipeline Across All Stages}
+\label{tab:master_hyperparameters}
+\begin{tabular}{lll}
+\hline
+\textbf{Category} & \textbf{Hyperparameter / Attribute} & \textbf{Operational Setting} \\
+\hline
+\textbf{Signal Preprocessing} & Active Electrodes ($C$) & 57 standard 10-20 channels (7 ungrounded dead channels pruned) \\
+& Sampling Frequency ($f_s$) & 256 Hz \\
+& Trial Window Duration ($T$) & 1.0 second (256 temporal samples per trial) \\
+& Bandpass Filtering & $0.5 - 45.0$ Hz (Butterworth 4th order, zero-phase) \\
+& Per-Trial Normalization & Z-score standardization across time per electrode \\
+\hline
+\textbf{Spectral Tokenization} & Decomposition Method & Differentiable 1D Depthwise Sinc-Convolution Bank \\
+& Number of Bands ($K$) & 5 canonical bands ($\delta: 1-4$Hz, $\theta: 4-8$Hz, $\alpha: 8-13$Hz, $\beta: 13-30$Hz, $\gamma: 30-50$Hz) \\
+& Sinc Filter Kernel Size & 63 samples ($246$ ms temporal span) \\
+\hline
+\textbf{Hierarchical MoE} & Spectral Specialists & 5 independent 1D CNNs (kernel=15, stride=2, dim=64) \\
+& Spatial Specialists & 4 region-specific 1D CNNs (Left: 24ch, Right: 24ch, Midline: 9ch, Global: 57ch) \\
+& Cross-Expert Attention & 4-Head Multi-Head Self-Attention ($d=64$, dropout=0.10) \\
+& Routing Mechanism & Dual Softmax Stream conditioned on $[\mathbf{v}_{\text{var}} \,\|\, \mathbf{p}_{\text{spec}} \,\|\, \lambda_{\text{lat}}]$ \\
+& Gating Load Balance Loss ($\mathcal{L}_{\text{balance}}$) & Auxiliary coefficient $\alpha = 0.01$ \\
+\hline
+\textbf{SS-CSP Pre-training} & Objective Loss & InfoNCE with temperature $\tau = 0.07$ \\
+& Stochastic Augmentations & Spectral Masking ($p=0.40$), Channel Dropout ($p=0.20$), Hemispheric Drop ($p=0.15$) \\
+& Pre-training Optimizer & AdamW ($\text{LR}=1.0 \times 10^{-3}$, weight decay=$1.0 \times 10^{-4}$) \\
+& Epochs & 10 epochs (converged to loss $0.082$) \\
+\hline
+\textbf{Supervised Fine-Tuning} & Loss Function & Cross-Entropy with Label Smoothing ($0.05$) \\
+& Fine-Tuning Optimizer & AdamW ($\text{Encoder LR}=1.0 \times 10^{-4}$, $\text{Head LR}=1.0 \times 10^{-3}$) \\
+& Early Stopping & Patience = 8 epochs on validation loss (Best checkpoint at Epoch 3: $69.02\%$) \\
+\hline
+\textbf{DG-TTA Latent Diffusion} & Model Formulation & Score-Based Denoising Diffusion Probabilistic Model (DDPM) \\
+& Score Network & 3-layer MLP ($64 \rightarrow 128 \rightarrow 128 \rightarrow 64$) with Swish activations \\
+& Reverse Adaptation & 12 Langevin reverse steps (Guidance scale $\gamma = 0.50$, inference latency $6.8$ ms) \\
+\hline
+\end{tabular}
+\end{table*}

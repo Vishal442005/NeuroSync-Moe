@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\caption{Phase 7: Systematic Multi-Component Ablation and Cross-Dataset Transfer Comparison}
+\label{tab:phase7_ablation_cross}
+\begin{tabular}{lccccc}
+\hline
+\textbf{Evaluated Model Configuration} & \textbf{Primary Acc (\%)} & \textbf{Primary F1 (\%)} & \textbf{Cross-Dataset Acc} & \textbf{Cross-Dataset F1} & \textbf{Explainability Level} \\
+\hline
+(A) Flat MoE (Generic CNN Experts) & 51.15\% & 48.02\% & 50.03\% & 33.37\% & Minimal (Collapsed Router) \\
+(B) EEGNet (Lawhern et al., 2018) & 58.19\% & 58.22\% & 49.97\% & 33.30\% & Black-Box Monolithic \\
+(C) NeuroSync (Without SS-CSP Pre-training) & 54.30\% & 50.15\% & 49.97\% & 33.30\% & Band Gating Only \\
+(D) NeuroSync (Without Cross-Expert Attention) & 55.10\% & 51.40\% & 49.97\% & 33.30\% & Decoupled Bands \\
+(E) NeuroSync (Without DG-TTA Adaptation) & 56.79\% & 52.93\% & 49.97\% & 33.30\% & Complete Hierarchy \\
+\textbf{(F) NeuroSync-MoE + DG-TTA (Full Proposed)} & \textbf{57.06\%} & \textbf{53.12\%} & \textbf{49.97\%} & \textbf{33.30\%} & \textbf{Full Neuroscientific Attribution} \\
+\hline
+\end{tabular}
+\end{table*}

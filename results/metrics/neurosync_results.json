@@ -1,0 +1,35 @@
+{
+  "uci_primary_without_tta": {
+    "accuracy": 0.5679012345679012,
+    "f1_score": 0.5293178243395417,
+    "precision": 0.5154134144020203,
+    "recall": 0.5679012345679012,
+    "auc_roc": 0.4458626161868057,
+    "cohen_kappa": -0.05038609024531193
+  },
+  "uci_primary_with_dgt_tta": {
+    "accuracy": 0.5705850778314546,
+    "f1_score": 0.5312393124964602,
+    "precision": 0.5176849735847682,
+    "recall": 0.5705850778314546,
+    "auc_roc": 0.44860323937630675,
+    "cohen_kappa": -0.04585070102311484
+  },
+  "openneuro_zero_shot": {
+    "accuracy": 0.49966433298168217,
+    "f1_score": 0.3329604367633899,
+    "precision": 0.24966444565402937,
+    "recall": 0.49966433298168217,
+    "auc_roc": 0.5068341511969764,
+    "cohen_kappa": 0.0
+  },
+  "openneuro_with_dgt_tta": {
+    "accuracy": 0.49966433298168217,
+    "f1_score": 0.3329604367633899,
+    "precision": 0.24966444565402937,
+    "recall": 0.49966433298168217,
+    "auc_roc": 0.4981370515776527,
+    "cohen_kappa": 0.0
+  },
+  "checkpoint_used": "checkpoints_himoe\\best_neurosync_himoe_epoch=03_val_acc=0.690.ckpt"
+}

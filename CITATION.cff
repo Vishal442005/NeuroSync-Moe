@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use NeuroSync-MoE or our benchmark suite in your research, please cite it as below."
+authors:
+  - family-names: "Chandel"
+    given-names: "Vishal"
+    orcid: "https://orcid.org/0009-0006-0552-8551"
+    affiliation: "Jawaharlal Nehru Government Engineering College (JNGEC)"
+  - family-names: "Sharma"
+    given-names: "Richa"
+    affiliation: "Dr. B. R. Ambedkar National Institute of Technology (NITJ)"
+title: "NeuroSync-MoE: Hierarchical Spectral-Spatial Mixture-of-Experts with Diffusion-Guided Test-Time Adaptation for EEG Alcoholism Detection"
+version: 1.0.0
+date-released: 2026-10-24
+license: MIT
+repository-code: "https://github.com/Vishal442005/NeuroSync-Moe"
+keywords:
+  - "Electroencephalography (EEG)"
+  - "Alcohol Use Disorder"
+  - "Mixture of Experts"
+  - "Subject-Independent Holdout"
+  - "Diffusion Test-Time Adaptation"
+  - "Domain Generalization"

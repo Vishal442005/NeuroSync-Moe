@@ -1,0 +1,19 @@
+{
+  "test_acc": 0.6468062265163714,
+  "test_f1": 0.4108846175782012,
+  "test_prec": 0.594879101235182,
+  "test_rec": 0.5053245417829412,
+  "test_auc": 0.51428734918239,
+  "test_kappa": 0.0134918204918205,
+  "best_val_acc": 0.6826347305389222,
+  "best_ckpt_path": "checkpoints_v2/best_v2_epoch=01_val_acc=0.683.ckpt",
+  "comparison": {
+    "NeuroSync_v1_acc": 0.5705850778314546,
+    "EEGNet_baseline_acc": 0.581857219538379,
+    "FlatMoE_ablation_acc": 0.5115405260332797,
+    "NeuroSync_v2_acc": 0.6468062265163714,
+    "delta_vs_v1": "+7.62%",
+    "delta_vs_eegnet": "+6.49%",
+    "delta_vs_flat_moe": "+13.53%"
+  }
+}

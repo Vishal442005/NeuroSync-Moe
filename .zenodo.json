@@ -1,0 +1,28 @@
+{
+  "title": "NeuroSync-MoE: Hierarchical Spectral-Spatial Mixture-of-Experts with Diffusion-Guided Test-Time Adaptation for EEG Alcoholism Detection",
+  "description": "Open-source deep learning framework and empirical evaluation suite for NeuroSync-MoE. Features: (1) Differentiable Multi-Scale Spectral Tokenizer decomposing multi-channel EEG into canonical bands (delta, theta, alpha, beta, gamma); (2) Two-Level Hierarchical Mixture of Experts (HiMoE) with 5 Spectral Specialists, Cross-Expert Multi-Head Attention, and 4 Spatial Specialists; (3) Dual-Branch Spectral-Spatial Contrastive Self-Supervised Pretraining (SS-CSP); (4) Backpropagation-free Latent Diffusion Test-Time Adaptation (DG-TTA); and (5) Subject-Adversarial Domain Generalization (DANN/GRL) setting a leak-free state-of-the-art benchmark of 64.68% holdout accuracy across 40,290 evaluated epochs and 190 human subjects across SUNY Downstate UCI, OpenNeuro ds008851, and OpenNeuro ds005907 cohorts.",
+  "creators": [
+    {
+      "name": "Chandel, Vishal",
+      "affiliation": "Jawaharlal Nehru Government Engineering College (JNGEC), Sundernagar, India",
+      "orcid": "0009-0006-0552-8551"
+    },
+    {
+      "name": "Sharma, Richa",
+      "affiliation": "Dr. B. R. Ambedkar National Institute of Technology (NITJ), Jalandhar, India"
+    }
+  ],
+  "keywords": [
+    "Electroencephalography (EEG)",
+    "Alcohol Use Disorder (AUD)",
+    "Mixture of Experts (MoE)",
+    "Subject-Independent Generalization",
+    "Diffusion Models",
+    "Test-Time Adaptation",
+    "Contrastive Learning",
+    "Biomedical Signal Processing",
+    "Neuroscience Explainability"
+  ],
+  "license": "MIT",
+  "upload_type": "software"
+}

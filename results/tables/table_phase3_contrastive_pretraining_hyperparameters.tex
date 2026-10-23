@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Phase 3: Hyperparameter and Augmentation Specifications for SS-CSP Pre-training}
+\label{tab:phase3_pretraining}
+\begin{tabular}{lcc}
+\hline
+\textbf{Pre-training Hyperparameter} & \textbf{Selected Configuration} & \textbf{Search / Practical Range} \\
+\hline
+Pre-training Objective & Self-Supervised InfoNCE Loss & Supervised vs. Contrastive \\
+Batch Size ($B$) & 64 trials per step & $[32, 64, 128]$ \\
+Optimizer & AdamW ($\beta_1=0.9, \beta_2=0.999$) & Adam vs. AdamW \\
+Initial Learning Rate & $1.0 \times 10^{-3}$ & $[10^{-4}, 10^{-3}, 10^{-2}]$ \\
+Learning Rate Schedule & Linear Warmup (2 epochs) + Cosine Decay & Warmup-Cosine Annealing \\
+Weight Decay & $1.0 \times 10^{-4}$ & $[10^{-5}, 10^{-4}, 10^{-3}]$ \\
+Temperature Parameter ($\tau$) & 0.07 & $[0.05, 0.07, 0.10, 0.20]$ \\
+Projection Head Dimension & $64 \rightarrow 64$ (2-layer MLP with GELU) & $[32, 64, 128]$ \\
+Spectral Masking Probability ($p_{\text{mask}}$) & 0.40 (1 to 2 frequency sub-bands dropped) & $[0.2, 0.4, 0.6]$ \\
+Electrode Dropout Rate ($p_{\text{drop}}$) & 0.20 (randomly zeroed active channels) & $[0.1, 0.2, 0.3]$ \\
+Hemispheric Drop Probability & 0.15 (drops Left or Right hemisphere) & $[0.0, 0.15, 0.30]$ \\
+Total Pre-training Epochs & 10 epochs (converged to loss 0.082) & Early stopping $\Delta < 10^{-3}$ \\
+\hline
+\end{tabular}
+\end{table}

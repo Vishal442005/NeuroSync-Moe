@@ -1,0 +1,22 @@
+\begin{table}[t]
+\centering
+\caption{Hyperparameter and Architectural Configuration of NeuroSync-MoE and Baselines}
+\label{tab:architecture}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Hyperparameter / Component} & \textbf{EEGNet} & \textbf{Flat MoE} & \textbf{NeuroSync-MoE (Ours)} \\
+\hline
+Electrode Montage ($C$) & 57 active & 57 active & 57 active \\
+Sampling Frequency ($f_s$) & 256 Hz & 256 Hz & 256 Hz \\
+Trial Epoch Duration ($T$) & 1.0 s (256 samples) & 1.0 s (256 samples) & 1.0 s (256 samples) \\
+Spectral Decomposition & None & None & 5-Band Filterbank ($\delta, \theta, \alpha, \beta, \gamma$) \\
+Number of Specialists & 1 (monolithic) & 4 (generic) & 5 Spectral + 4 Spatial (9 total) \\
+Routing Mechanism & N/A & Single Softmax & Hierarchical Dual-Stream Router \\
+Inter-Expert Coupling & None & None & Cross-Expert Multi-Head Attention \\
+Latent Dimension ($d$) & 16 & 64 & 64 \\
+Pre-training Objective & None & None & SS-CSP InfoNCE Contrastive SSL \\
+Test-Time Adaptation (TTA) & None & None & DG-TTA Latent Score Diffusion \\
+Trainable Parameters & $\sim 2.6$k & $\sim 24.1$k & $\sim 94.8$k \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,16 @@
+\begin{table*}[t]
+\centering
+\caption{Subject-Independent Performance on the Primary 57-Channel UCI EEG Benchmark (1,863 Unseen Test Trials Across 21 Withheld Subjects)}
+\label{tab:primary_benchmark}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Architecture} & \textbf{Pre-training} & \textbf{Adaptation / Regularization} & \textbf{Accuracy (\%)} & \textbf{Precision (\%)} & \textbf{AUC-ROC} & \textbf{Cohen's $\kappa$} \\
+\hline
+Flat MoE (Ablation) & None & None & 51.15\% & 46.22\% & 0.355 & -0.161 \\
+EEGNet (Lawhern et al., 2018) & None & None & 58.19\% & 58.26\% & 0.516 & +0.088 \\
+NeuroSync-MoE v1 (Base) & SS-CSP & None & 56.79\% & 51.54\% & 0.446 & -0.050 \\
+NeuroSync-MoE v1 + DG-TTA & SS-CSP & Latent Score DDPM & 57.06\% & 51.77\% & 0.449 & -0.046 \\
+\textbf{NeuroSync-MoE v2 (Proposed)} & SS-CSP & \textbf{DANN + Focal Loss + SWA} & \textbf{64.68\%} & \textbf{59.49\%} & \textbf{0.514} & \textbf{+0.014} \\
+\hline
+\end{tabular}
+\end{table*}

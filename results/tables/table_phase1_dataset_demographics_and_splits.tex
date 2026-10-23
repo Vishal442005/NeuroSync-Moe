@@ -1,0 +1,23 @@
+\begin{table}[t]
+\centering
+\caption{Phase 1: UCI Dataset Demographic Breakdown and Subject-Independent Partitioning}
+\label{tab:phase1_dataset}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Partition / Metric} & \textbf{Alcoholic (AUD)} & \textbf{Healthy Control} & \textbf{Total Cohort} & \textbf{Proportion} \\
+\hline
+Subjects in Cohort & 77 subjects & 45 subjects & 122 subjects & 100.0\% \\
+Total Analyzed Trials & 7,033 trials & 4,024 trials & 11,057 trials & 100.0\% \\
+\hline
+Training Split (Subjects) & 53 subjects & 31 subjects & 84 subjects & 68.9\% \\
+Training Split (Trials) & 4,872 trials & 2,860 trials & 7,732 trials & 69.9\% \\
+Validation Split (Subjects) & 11 subjects & 6 subjects & 17 subjects & 13.9\% \\
+Validation Split (Trials) & 995 trials & 467 trials & 1,462 trials & 13.2\% \\
+Holdout Test Split (Subjects) & 13 subjects & 8 subjects & 21 subjects & 17.2\% \\
+Holdout Test Split (Trials) & 1,166 trials & 697 trials & 1,863 trials & 16.9\% \\
+\hline
+Active EEG Montage & \multicolumn{3}{c}{57 electrodes (pruned dead channels: AF7, AF8, T9, T10, POZ, PO8, OZ)} & 89.1\% \\
+Sampling Rate ($f_s$) & \multicolumn{3}{c}{256 Hz (1.0 second post-stimulus visual ERP window, $T=256$)} & 100.0\% \\
+\hline
+\end{tabular}
+\end{table}

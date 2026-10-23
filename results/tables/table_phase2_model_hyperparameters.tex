@@ -1,0 +1,21 @@
+\begin{table}[t]
+\centering
+\caption{Phase 2: Layer-by-Layer Architectural Specifications and Hyperparameters of NeuroSync-MoE}
+\label{tab:phase2_hyperparameters}
+\begin{tabular}{llcc}
+\hline
+\textbf{Sub-Module} & \textbf{Layer Details / Operation} & \textbf{Output Dimension} & \textbf{Parameter Count} \\
+\hline
+Spectral Tokenizer & 5-Band Depthwise Conv1D Bank (kernel size=63) & $(B, 5, 57, 256)$ & Fixed / Differentiable \\
+Layer 1: Spectral Specialists & 5 parallel Conv1D blocks (dim=64, kernel=15, stride=2) & $(B, 5, 64)$ & 42,240 parameters \\
+Cross-Expert Attention & 4-Head Multi-Head Self-Attention + FFN + LayerNorm & $(B, 5, 64)$ & 16,896 parameters \\
+Layer 2: Spatial Specialists & 4 Conv1D blocks (Left, Right, Midline, Global) & $(B, 4, 64)$ & 33,792 parameters \\
+Spatial Context Attention & 4-Head Multi-Head Self-Attention + LayerNorm & $(B, 4, 64)$ & 16,896 parameters \\
+Hierarchical Dual Router & Variance + Power + Laterality Index $\rightarrow$ Dual MLP & $(B, 5) \text{ and } (B, 4)$ & 1,280 parameters \\
+Feature Fusion & Concatenation $[\mathbf{z}_{\text{spec}} \,\|\, \mathbf{z}_{\text{spat}}] \rightarrow \text{Linear}(128, 64)$ & $(B, 64)$ & 8,256 parameters \\
+Classifier Head & Linear Layer $(64, 2) \rightarrow \text{Softmax}$ & $(B, 2)$ & 130 parameters \\
+\hline
+\textbf{Total Parameter Footprint} & \multicolumn{2}{l}{\textbf{NeuroSync-MoE Encoder + Classifier}} & \textbf{94,842 parameters} \\
+\hline
+\end{tabular}
+\end{table}

@@ -1,0 +1,100 @@
+# ==============================================================================
+# NeuroSync-MoE Centralized Configuration
+# Target: Cross-Subject & Cross-Dataset EEG Alcoholism Detection
+# ==============================================================================
+
+experiment:
+  name: "neurosync_moe_alcoholism"
+  seed: 42
+  precision: "32-true"
+
+# ------------------------------------------------------------------------------
+# Dataset Settings
+# ------------------------------------------------------------------------------
+data:
+  uci_primary:
+    raw_dir: "eeg_full"
+    processed_dir: "eeg_processed"
+    sampling_rate: 256
+    time_points: 256
+    total_subjects: 122
+    active_channels: 57
+    dead_channels: [4, 6, 21, 22, 42, 44, 49]
+    splits:
+      train_subjects: 84
+      val_subjects: 17
+      test_subjects: 21
+      test_trials: 1863
+
+  openneuro_secondary:
+    raw_dir: "ds008851"
+    cache_file: "ds008851/ds008851_processed_cache.npz"
+    sampling_rate: 250
+    target_sampling_rate: 256
+    total_subjects: 60
+    total_trials: 20854
+    channels: ["Fp1", "Fp2", "F3", "F4", "O1", "O2", "Fz", "Pz"]
+
+# ------------------------------------------------------------------------------
+# Model Architecture (Hierarchical MoE)
+# ------------------------------------------------------------------------------
+model:
+  in_channels: 57
+  num_classes: 2
+  hidden_dim: 64
+  num_heads: 4
+  dropout: 0.25
+  load_balance_weight: 0.01
+
+  spectral_tokenizer:
+    kernel_size: 65
+    sample_rate: 256
+    bands:
+      delta: [1.0, 4.0]
+      theta: [4.0, 8.0]
+      alpha: [8.0, 13.0]
+      beta: [13.0, 30.0]
+      gamma: [30.0, 50.0]
+
+  spatial_specialists:
+    left_hemisphere: ["FP1", "AF7", "AF3", "F7", "F5", "F3", "F1", "FT7", "FC5", "FC3", "FC1", "T7", "C5", "C3", "C1", "TP7", "CP5", "CP3", "CP1", "P7", "P5", "P3", "P1", "PO7", "PO3", "O1"]
+    right_hemisphere: ["FP2", "AF4", "AF8", "F2", "F4", "F6", "F8", "FT8", "FC2", "FC4", "FC6", "T8", "C2", "C4", "C6", "TP8", "CP2", "CP4", "CP6", "P2", "P4", "P6", "P8", "PO4", "PO8", "O2"]
+    midline: ["FPZ", "AFZ", "FZ", "FCZ", "CZ", "CPZ", "PZ", "POZ", "OZ", "IZ"]
+    global_coordinator: "all_active_channels"
+
+# ------------------------------------------------------------------------------
+# Self-Supervised Pretraining (SS-CSP)
+# ------------------------------------------------------------------------------
+pretraining:
+  epochs: 10
+  batch_size: 64
+  learning_rate: 5.0e-4
+  temperature: 0.1
+  spectral_mask_prob: 0.5
+  channel_dropout_ratio: 0.15
+  gaussian_noise_std: 0.02
+
+# ------------------------------------------------------------------------------
+# Supervised Fine-Tuning
+# ------------------------------------------------------------------------------
+training:
+  epochs: 15
+  batch_size: 32
+  learning_rate: 1.0e-3
+  weight_decay: 1.0e-3
+  label_smoothing: 0.05
+  lr_scheduler: "CosineAnnealingLR"
+  early_stopping_patience: 5
+
+# ------------------------------------------------------------------------------
+# Diffusion-Guided Test-Time Adaptation (DG-TTA)
+# ------------------------------------------------------------------------------
+diffusion_tta:
+  latent_dim: 64
+  num_timesteps: 20
+  beta_start: 1.0e-4
+  beta_end: 0.02
+  score_epochs: 15
+  score_lr: 1.0e-3
+  adaptation_steps: 5
+  step_size: 0.05

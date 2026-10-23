@@ -1,0 +1,17 @@
+\begin{table*}[t]
+\centering
+\caption{Phase 4: Detailed Subject-Independent Classification Metrics on 1,863 Held-out UCI Test Trials}
+\label{tab:phase4_primary_metrics}
+\begin{tabular}{lcccccc}
+\hline
+\textbf{Architecture / Model} & \textbf{Accuracy (\%)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{Balanced F1 (\%)} & \textbf{AUC-ROC} & \textbf{Cohen's $\kappa$} \\
+\hline
+Flat MoE (Ablation: Generic Experts) & 51.15\% & 46.22\% & 51.15\% & 48.02\% & 0.355 & -0.161 \\
+EEGNet (Lawhern et al., 2018) & 58.19\% & 58.26\% & 58.19\% & 58.22\% & 0.516 & +0.088 \\
+NeuroSync-MoE (Zero-Shot / No TTA) & 56.79\% & 51.54\% & 56.79\% & 52.93\% & 0.446 & -0.050 \\
+\textbf{NeuroSync-MoE + DG-TTA (Proposed)} & \textbf{57.06\%} & \textbf{51.77\%} & \textbf{57.06\%} & \textbf{53.12\%} & \textbf{0.449} & \textbf{-0.046} \\
+\hline
+$\Delta$ Gain from DG-TTA Diffusion Adaptation & +0.27\% & +0.23\% & +0.27\% & +0.19\% & +0.003 & +0.004 \\
+\hline
+\end{tabular}
+\end{table*}
